@@ -110,7 +110,7 @@ if(empty($_SESSION['adminuser']))
                                     document.getElementById("div2").innerHTML=xmlhttp.responseText;
                                 }
                             }
-                            xmlhttp.open("GET","add_delete_newStudent_raction.php?a=addNew&studentID="+studentID+"&studentName="+studentName+"&age="+age+"&gender="+gender+"&department="+department,true);
+                            xmlhttp.open("GET","admin_raction.php?a=addNew&studentID="+studentID+"&studentName="+studentName+"&age="+age+"&gender="+gender+"&department="+department,true);
                             xmlhttp.send();
                         };
             var element = document.getElementById("div1");
@@ -144,7 +144,7 @@ if(empty($_SESSION['adminuser']))
                     document.getElementById("div1").innerHTML=xmlhttp.responseText;
                 }
             }
-            xmlhttp.open("GET","all_students_infor.php",true);
+            xmlhttp.open("GET","admin_raction.php?a=all_students_info",true);
             xmlhttp.send();
                     
         }

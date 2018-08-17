@@ -78,6 +78,64 @@ switch($_GET['a'])
         <input type = 'button' onclick = 'submitMark(<?php echo $studentID ?>, <?php echo $cno ?>)' value = 'submit'>";
         break;
     }
-$conn->close();
+    case "addNew":
+    {
+        $studentID = $_REQUEST['studentID'];
+        $studentName= $_REQUEST['studentName'];
+        $age = $_REQUEST['age'];
+        $gender = $_REQUEST['gender'];
+        $department = $_REQUEST['department'];
+        $password = $_REQUEST['studentName'];
+
+        $sql = "SELECT * FROM student WHERE studentID = '$studentID' "; 
+        $result = $conn->query($sql);
+        if($result->num_rows ==1)
+        {
+            echo 'the student is already exist!';
+        }
+        else
+        {
+            $sql = "INSERT INTO student (studentID, studentName, age, gender, department, password) VALUES('$studentID', '$studentName', '$age', '$gender', '$department', '$password')";
+            $result = $conn->query($sql);
+            if ($result === TRUE)
+            { 
+                echo "insert new student successfully!";
+            }else
+            {
+                echo "insert failed";
+            }
+        }
+        break;
+    }
+    case "all_students_info":
+    {
+        $sql = "SELECT * FROM student ORDER BY studentID";
+        $result = $conn->query($sql);
+        echo "<table style ='border : solid 1px black;'>";
+        echo "<tr><th>studentID</th><th>studentName</th><th>age</th><th>gender</th><th>department</th></tr>";
+        while ($row = $result->fetch_row()) 
+        {
+            echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td>
+            <td><input type='button' onclick='deleteNew(\"$row[0]\")' value='delete'></td></tr>";
+        }
+        break;
+    }
+    case "deleteNew":
+    {
+        $studentID = $_REQUEST['studentID'];
+        $sql = "DELETE FROM student WHERE studentID = '$studentID'"; 
+        $result = $conn->query($sql);
+        if ($result === TRUE)
+            { 
+                $sql = "DELETE FROM sreport WHERE studentID = '$studentID'";
+                $result = $conn->query($sql);
+                if ($result === TRUE)
+                { 
+                   echo "delete";
+                }
+            }
+            break;
+    }
 }
+$conn->close();
  ?>

@@ -1,4 +1,4 @@
-function deleteInfo(studentID)
+function deleteNew(studentID)
 {
     xmlhttp = new XMLHttpRequest();
                     
@@ -10,7 +10,7 @@ function deleteInfo(studentID)
                 document.getElementById("div2").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","add_delete_newStudent_raction.php?a=delete&studentID="+studentID, true);
+        xmlhttp.open("GET","admin_raction.php?a=deleteNew&studentID="+studentID, true);
         xmlhttp.send();
 }
 
@@ -25,7 +25,7 @@ function editInfo(studentID, cno)
                 document.getElementById("div2").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","search_edit_grade.php?studentID="+studentID+"&cno="+cno, true);
+        xmlhttp.open("GET","admin_raction.php?a=editInfo_face&studentID="+studentID+"&cno="+cno, true);
         xmlhttp.send();
 }
 
