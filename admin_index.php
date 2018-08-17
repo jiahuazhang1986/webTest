@@ -162,7 +162,7 @@ if(empty($_SESSION['adminuser']))
                     document.getElementById("div1").innerHTML=xmlhttp.responseText;
                 }
             }
-            xmlhttp.open("GET","grade_management.php",true);
+            xmlhttp.open("GET","admin_raction.php?a=grade_management",true);
             xmlhttp.send();
         }
 
@@ -179,7 +179,7 @@ if(empty($_SESSION['adminuser']))
                     document.getElementById("div1").innerHTML=xmlhttp.responseText;
                 }
             }
-            xmlhttp.open("GET","course_management.php",true);
+            xmlhttp.open("GET","admin_raction.php?a=course_management",true);
             xmlhttp.send();
         }
         </script>

@@ -71,7 +71,7 @@ function addGrade_face()
                 document.getElementById("div2").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","add_grade_face.php", true);
+        xmlhttp.open("GET","admin_raction.php?a=add_grade_face", true);
         xmlhttp.send();
 }
 
@@ -91,7 +91,7 @@ function addGrade()
                 document.getElementById("div2").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","addGrade_raction.php?studentID="+studentID+"&cno="+cno+"&cname="+cname+"&mark="+mark, true);
+        xmlhttp.open("GET","admin_raction.php?a=add_grade&studentID="+studentID+"&cno="+cno+"&cname="+cname+"&mark="+mark, true);
         xmlhttp.send();
 }
 
@@ -106,7 +106,7 @@ function deleteCourse(cno)
                 document.getElementById("div2").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","add_delete_course_raction.php?a=delete&cno="+cno, true);
+        xmlhttp.open("GET","admin_raction.php?a=deleteCourse&cno="+cno, true);
         xmlhttp.send();
 }
 
@@ -121,7 +121,7 @@ function addCourse_face()
                 document.getElementById("div2").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","add_course_face.php", true);
+        xmlhttp.open("GET","admin_raction.php?a=add_course_face", true);
         xmlhttp.send();
 }
 
@@ -139,6 +139,6 @@ function addCourse()
                 document.getElementById("div2").innerHTML=xmlhttp.responseText;
             }
         }
-        xmlhttp.open("GET","add_delete_course_raction.php?a=add&cno="+cno+"&cname="+cname, true);
+        xmlhttp.open("GET","admin_raction.php?a=addCourse&cno="+cno+"&cname="+cname, true);
         xmlhttp.send();
 }
