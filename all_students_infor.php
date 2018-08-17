@@ -16,8 +16,9 @@ echo "<tr><th>studentID</th><th>studentName</th><th>age</th><th>gender</th><th>d
 while ($row = $result->fetch_row()) 
 {
     echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td>
-    <td><a href = 'add_delete_newStudent_raction.php?a=delete&b=$row[0]'>delete</a></td></tr>";
-    
+    <td><input type='button' onclick='deleteInfo(\"$row[0]\")' value='delete'></td></tr>";
 }
+
 $conn->close();
 ?>
+

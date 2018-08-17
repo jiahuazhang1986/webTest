@@ -25,7 +25,7 @@ switch($_GET['a'])
             header("Location:student_login.html");
         } 
 
-        $conn->close();
+        
         break;
         
     }
@@ -35,6 +35,6 @@ switch($_GET['a'])
         header('Location:student_login.html');
         break;
     }
-    
+    $conn->close();
 }
 ?>

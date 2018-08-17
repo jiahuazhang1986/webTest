@@ -12,11 +12,11 @@ include "db.php";
 $sql = "SELECT * FROM sreport ORDER BY studentID";
 $result = $conn->query($sql);
 echo "<table style ='border : solid 1px black;'>";
-echo "<tr><th>studentID</th><th>cno</th><th>cname</th><th>mark</th><th><a href = 'add_grade.php'>ADD</a></th></tr>";
+echo "<tr><th>studentID</th><th>cno</th><th>cname</th><th>mark</th><th><input type = 'button' onclick = 'addGrade_face()' value ='ADD'></th></tr>";
  while ($row = $result->fetch_row()) 
  {
      echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td>
-     <td><a href = 'edit_grade.php?studentID=$row[0]&cno=$row[1]'>edit</a></td><td><a href = 'grade_raction.php?a=delete&studentID=$row[0]&cno=$row[1]'>delete</a></td></tr>";
+     <td><input type = 'button' onclick = 'editInfo(\"$row[0]\", \"$row[1]\")' value ='edit'></td><td><input type = 'button' onclick = 'deleteInfo(\"$row[0]\", \"$row[1]\")' value ='delete'></td></tr>";
  }
 
  $conn->close();

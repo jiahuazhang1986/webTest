@@ -17,43 +17,41 @@ switch($_GET['a'])
 
         if(!$cno||!$cname)
         {
-            die("<script>alert('not complete!')</script>, <script>window.location = 'add_course.php';</script>");
+            echo "not complete!";
         }
         else
         {
             $sql = "SELECT * FROM course WHERE cno = '$cno' "; 
             $result = $conn->query($sql);
-            $row = $result->fetch_row();
-            if($cno == $row[0])
+            if($result->num_rows == 1)
             {
-                die("<script>alert('the course is already exist!')</script>, <script>window.location = 'add_course.php';</script>");
+                echo "the course is already exist";
             }
 
             $sql = "INSERT INTO course (cno, cname) VALUES('$cno', '$cname')";
             $result = $conn->query($sql);
             if ($result === TRUE)
             { 
-                echo "<script>alert('add new course!')</script>";
-                echo "<script>window.location = 'add_course.php'</script>";
+                echo "add new course!";
             }else
             {
                 echo "insert failed";
             }
         }
-        $conn->close();
+        break;
     }
 
     case "delete":
     {
-        $cno = $_GET['b'];
+        $cno = $_REQUEST['cno'];
         $sql = "DELETE FROM course WHERE cno = '$cno'"; 
         $result = $conn->query($sql);
         echo $result;
         if ($result === TRUE)
             { 
-                echo "<script>alert('delete $cno !')</script>";
-                echo "<script>window.location = 'course_management.php'</script>";
+                echo "delete course!";
             }
+        break;
     }
     $conn->close();
 }
