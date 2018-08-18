@@ -23,19 +23,23 @@ switch($_GET['a'])
 
         $sql = "SELECT * FROM student WHERE studentID = '$studentID'";
         $result = $conn->query($sql);
-        $row = $result->fetch_row();
-        $studentName = $row[1];
-        echo $studentID . $studentName ." report : <br>";
-
-        $sql = "SELECT * FROM sreport WHERE studentID = '$studentID'";
-        $result = $conn->query($sql);
-        echo "<table style ='border : solid 1px black;'>";
-        echo "<tr><th>cno</th><th>cname</th><th>mark</th></tr>";
-        while ($row = $result->fetch_row()) 
+        if($result->num_rows > 0)
         {
-            echo "<tr><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td>
-             <td><input type = 'button' onclick = 'editInfo(\"$row[0]\", \"$row[1]\")' value ='edit'></td><td><input type = 'button' onclick = 'deleteInfo(\"$row[0]\", \"$row[1]\")' value ='delete'></td></tr>";
+            $row = $result->fetch_row();
+            $studentName = $row[1];
+            echo $studentID . $studentName ." report : <br>";
+    
+            $sql = "SELECT * FROM sreport WHERE studentID = '$studentID'";
+            $result = $conn->query($sql);
+            echo "<table style ='border : solid 1px black;'>";
+            echo "<tr><th>cno</th><th>cname</th><th>mark</th></tr>";
+            while ($row = $result->fetch_row()) 
+            {
+                echo "<tr><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td>
+                 <td><input type = 'button' onclick = 'editInfo_searchNew(\"$row[0]\", \"$row[1]\")' value ='edit'></td><td><input type = 'button' onclick = 'deleteInfo(\"$row[0]\", \"$row[1]\")' value ='delete'></td></tr>";
+            }
         }
+        
         break;
     }
 
@@ -67,6 +71,19 @@ switch($_GET['a'])
             }
         break;
     }
+    case "editInfo_face_searchNew":
+    {
+        $studentID = $_GET['studentID'];
+        $cno = $_GET['cno'];
+        
+        echo "studentID :" . $studentID . "& cno:" . $cno;
+        echo "<br>";
+        echo "mark: <input id = 'markID' type = 'text' name ='mark'>";
+        echo "<br>";
+        echo "<input type = 'button' onclick = 'submitMark_searchNew($studentID, $cno)' value = 'submit'>";
+        break;
+    }
+
     case "editInfo_face":
     {
         $studentID = $_GET['studentID'];

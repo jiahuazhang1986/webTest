@@ -35,7 +35,7 @@ function change_password()
     var confirmNewPassword = document.getElementById("confirmNewPassword").value;
     var answer = document.getElementById("answer").value;
     var question = document.getElementById("question").value;
-
+    var email = document.getElementById("email").value;
     xmlhttp = new XMLHttpRequest();
                     
     xmlhttp.onreadystatechange=function()
@@ -45,6 +45,6 @@ function change_password()
             document.getElementById("div2").innerHTML = xmlhttp.responseText;
         }
     }
-    xmlhttp.open("GET","student_raction.php?a=change_password&oldPassword="+oldPassword+"&newPassword="+newPassword+"&confirmNewPassword="+confirmNewPassword+"&answer="+answer+"&question="+question, true);
+    xmlhttp.open("GET","student_raction.php?a=change_password&oldPassword="+oldPassword+"&newPassword="+newPassword+"&confirmNewPassword="+confirmNewPassword+"&answer="+answer+"&question="+question+"&email="+email, true);
     xmlhttp.send();
 }

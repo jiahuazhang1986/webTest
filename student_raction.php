@@ -44,6 +44,8 @@ switch ($_GET['a'])
             <input type = 'text' id ='question' name = 'question'><br>
             <label for 'answer'>answer:</label>
             <input type = 'text' id ='answer' name = 'answer'><br>
+            <label for 'email'>email:</label>
+            <input type = 'text' id ='email' name = 'email'><br>
             <input type = 'button' onclick = 'change_password()' value = 'ok'>";
             break;
     }
@@ -57,7 +59,8 @@ switch ($_GET['a'])
         $confirmNewPassword = $_REQUEST['confirmNewPassword'];
         $answer = $_REQUEST['answer'];
         $question = $_REQUEST['question'];
-       
+        $email = $_REQUEST['email'];
+        
         $sql = "SELECT * FROM student WHERE studentID = '$studentID'";
         $result = $conn->query($sql);
         $row = $result->fetch_row();
@@ -67,9 +70,13 @@ switch ($_GET['a'])
            {
            echo "not same password!";
            }
+           else if($email == "")
+           {
+               echo "email must fill!";
+           }
            else
            {
-               $sql = "UPDATE student SET password = '$newPassword', answer = '$answer', question = '$question'  WHERE studentID = '$studentID'";
+               $sql = "UPDATE student SET password = '$newPassword', answer = '$answer', question = '$question', email = '$email'  WHERE studentID = '$studentID'";
                $result = $conn->query($sql);
                if($result == TRUE)
                {
