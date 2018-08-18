@@ -72,12 +72,14 @@ switch($_GET['a'])
         $studentID = $_GET['studentID'];
         $cno = $_GET['cno'];
         
-        echo "studentID : <?php echo $studentID?> & cno:<?php echo $cno?> <br>";
+        echo "studentID :" . $studentID . "& cno:" . $cno;
+        echo "<br>";
         echo "mark: <input id = 'markID' type = 'text' name ='mark'>";
         echo "<br>";
-        echo "<input type = 'button' onclick = 'submitMark(<?php echo $studentID ?>,<?php echo $cno ?>)' value = 'submit'>";
+        echo "<input type = 'button' onclick = 'submitMark($studentID, $cno)' value = 'submit'>";
         break;
     }
+    
     case "addNew":
     {
         $studentID = $_REQUEST['studentID'];

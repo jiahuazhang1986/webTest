@@ -33,14 +33,15 @@ $conn->close();
         <title>
             student management system
         </title>
+        <script type="text/javascript"  src = "student_helper.js"></script>
     </head>
 <body>
 
-    <a href = "student_report.php?" target="iframe_a">student report</a><br>
-    <a href = "change_password.php" target="iframe_a">change password</a><br>
-    <a href = "student_loginoutRaction.php?a=logout">log out</a>
-    
-    <iframe height="400px" width="100%" src="" name="iframe_a"></iframe>
+<input type = "button" onclick = "student_report()" value = "student_report">
+<input type = "button" onclick = "change_password_face()" value = "change_password">
+<a href = "student_loginoutRaction.php?a=logout">log out</a>
+<div id="div1"></div>
+<div id="div2"></div>
 
 </body>
 </html>

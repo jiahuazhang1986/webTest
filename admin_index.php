@@ -14,7 +14,7 @@ if(empty($_SESSION['adminuser']))
         <title>
             admin management system
         </title>
-        <script src = "helper.js"></script>
+        <script type="text/javascript"  src = "admin_helper.js"></script>
         <script>
         
         function search_student_function()

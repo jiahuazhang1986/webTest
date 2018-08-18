@@ -1,37 +1,25 @@
 <?php
-//开启session
-session_start();
-//判断session是否为空
-if(empty($_SESSION['forgetuser']))
-{
-    header("Location:student_login.html");
-    exit();
-}
-
-$studentID = $_SESSION['forgetuser']['studentID'];
+include "db.php";
+$studentID = $_REQUEST['studentID'];
 $answer = $_REQUEST['answer'];
-$newPassword = $_REQUEST['newPassword'];
-$confirmNewPassword = $_REQUEST['confirmNewPassword'];
 
-if($newPassword != $confirmNewPassword)
+$sql = "SELECT * FROM student WHERE studentID = '$studentID'";
+$result = $conn->query($sql);
+if($result->num_rows >0)
 {
-    echo "<script>alert('not same password, refill it!')</script>";
-    echo "<script>window.location = 'forget_question_raction.php'</script>";
-}
-else
-{
-    if($answer == $_SESSION['forgetuser']['answer'])
+    $row = $result->fetch_row();
+    if($answer == $row[7])
     {
-        $txt = sprintf("<script>alert('your password is: %s')</script>", $_SESSION['forgetuser']['password']);
-        echo $txt;
+        echo "your password is:$row[5]";
+        echo "<br><a href = 'student_login.html'>student_login</a>";
     }
     else
     {
-        echo "<script>alert('your answer is not correct!')</script>";
+        echo "your answer is not correct!";
+        echo "<br><a href = 'student_login.html'>student_login</a>";
     }
-    unset($_SESSION['studentuser']);
-    echo "<script>window.location = 'student_login.html'</script>";
 }
 
+$conn->close();
 
 ?>
