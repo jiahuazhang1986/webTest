@@ -15,29 +15,31 @@ switch($_GET['a'])
     { 
         if(isset($_REQUEST['studentID']) && $_REQUEST['studentID']!="")
         {
-           $studentID = $_REQUEST['studentID'];
-        }else
-        {
-           $studentID = $_GET['studentID'];
-        }
+            $studentID = $_REQUEST['studentID'];
 
-        $sql = "SELECT * FROM student WHERE studentID = '$studentID'";
-        $result = $conn->query($sql);
-        if($result->num_rows > 0)
-        {
-            $row = $result->fetch_row();
-            $studentName = $row[1];
-            echo $studentID . $studentName ." report : <br>";
-    
-            $sql = "SELECT * FROM sreport WHERE studentID = '$studentID'";
+            $sql = "SELECT * FROM student WHERE studentID = '$studentID'";
+
             $result = $conn->query($sql);
-            echo "<table style ='border : solid 1px black;'>";
-            echo "<tr><th>cno</th><th>cname</th><th>mark</th></tr>";
-            while ($row = $result->fetch_row()) 
+            if($result->num_rows > 0)
             {
-                echo "<tr><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td>
-                 <td><input type = 'button' onclick = 'editInfo_searchNew(\"$row[0]\", \"$row[1]\")' value ='edit'></td><td><input type = 'button' onclick = 'deleteInfo(\"$row[0]\", \"$row[1]\")' value ='delete'></td></tr>";
+                $row = $result->fetch_row();
+                $studentName = $row[1];
+                echo $studentID . $studentName ." report : <br>";
+            
+                $sql = "SELECT * FROM sreport WHERE studentID = '$studentID'";
+                $result = $conn->query($sql);
+                echo "<table style ='border : solid 1px black;'>";
+                echo "<tr><th>cno</th><th>cname</th><th>mark</th></tr>";
+                while ($row = $result->fetch_row()) 
+                {
+                    echo "<tr><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td>
+                     <td><input type = 'button' onclick = 'editInfo_searchNew(\"$row[0]\", \"$row[1]\")' value ='edit'></td><td><input type = 'button' onclick = 'deleteInfo_search(\"$row[0]\", \"$row[1]\")' value ='delete'></td></tr>";
+                }
             }
+        }
+        else
+        {
+            echo "wrong studnetID";
         }
         
         break;
@@ -80,7 +82,7 @@ switch($_GET['a'])
         echo "<br>";
         echo "mark: <input id = 'markID' type = 'text' name ='mark'>";
         echo "<br>";
-        echo "<input type = 'button' onclick = 'submitMark_searchNew($studentID, $cno)' value = 'submit'>";
+        echo "<input type = 'button' onclick = 'submitMark_searchNew(\"$studentID\", \"$cno\")' value = 'submit'>";
         break;
     }
 
@@ -93,7 +95,7 @@ switch($_GET['a'])
         echo "<br>";
         echo "mark: <input id = 'markID' type = 'text' name ='mark'>";
         echo "<br>";
-        echo "<input type = 'button' onclick = 'submitMark($studentID, $cno)' value = 'submit'>";
+        echo "<input type = 'button' onclick = 'submitMark(\"$studentID\", \"$cno\")' value = 'submit'>";
         break;
     }
     

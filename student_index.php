@@ -33,7 +33,8 @@ $conn->close();
         <title>
             student management system
         </title>
-        <script type="text/javascript"  src = "student_helper.js"></script>
+        <script src = "jquery.min.js"></script>
+        <script  src = "student_helper.js"></script>
     </head>
 <body>
 
