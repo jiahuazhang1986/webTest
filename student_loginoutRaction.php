@@ -1,11 +1,10 @@
 <?php
 session_start();
+include "db.php";
 switch($_GET['a'])
 {
     case "login":
     {
-        include "db.php";
-
         $studentID = $_REQUEST['studentID'];
         $id_password = $_REQUEST['password'];
 
@@ -22,7 +21,9 @@ switch($_GET['a'])
         }
         else
         {
-            header("Location:student_login.html");
+            echo "<script>alert('wrong id or password')</script>";
+            //header("Location:student_login.html");
+            echo"<script>window.location = 'student_login.html'</script>";
         } 
 
         
@@ -35,6 +36,7 @@ switch($_GET['a'])
         header('Location:student_login.html');
         break;
     }
-    $conn->close();
+    
 }
+$conn->close();
 ?>

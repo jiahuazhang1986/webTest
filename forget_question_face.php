@@ -19,7 +19,7 @@ if(isset($_REQUEST['studentID']) && $_REQUEST['studentID']!="")
         else
         {
             echo "
-            $question
+            what is your favourite color?
             <br>
             answer: <input type = 'text' id = 'answer' name ='answer'>
             <br>

@@ -14,10 +14,8 @@ function change_password()
     var newPassword = $("#newPassword").val();
     var confirmNewPassword = $("#confirmNewPassword").val();
     var answer = $("#answer").val();
-    var question = $("#question").val();
     var email = $("#email").val();
 
-    var tmp = "student_raction.php?a=change_password&oldPassword="+oldPassword+"&newPassword="+newPassword+"&confirmNewPassword="+confirmNewPassword+"&answer="+answer+"&question="+question+"&email="+email;
-    alert(tmp);
+    var tmp = "student_raction.php?a=change_password&oldPassword="+oldPassword+"&newPassword="+newPassword+"&confirmNewPassword="+confirmNewPassword+"&answer="+answer+"&email="+email;
     $("#div2").load(tmp);
 }

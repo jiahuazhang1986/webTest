@@ -1,10 +1,10 @@
 <?php
 session_start();
+include "db.php";
 switch($_GET['a'])
 {
     case "login":
-    {
-        include "db.php";
+    {       
         $name = $_REQUEST['adminID'];
         $id_password = $_REQUEST['password'];
         //mysql_set_charset('utf8');
@@ -19,19 +19,20 @@ switch($_GET['a'])
         }
         else
         {
-            header("Location:admin_login.html");
+            //header("Location:admin_login.html");
+            echo "<script>alert('wrong id or password')</script>";
+            echo"<script>window.location = 'admin_login.html'</script>";
         } 
 
         $conn->close();
-        break;
-        
+        break; 
     }
     case "logout":
     {
         unset($_SESSION['adminuser']);
         header('Location:admin_login.html');
         break;
-    }
-    
+    }  
 }
+$conn->close();
 ?>

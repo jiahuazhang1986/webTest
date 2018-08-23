@@ -40,8 +40,7 @@ switch ($_GET['a'])
             <input type = 'text' id ='newPassword' name = 'newPassword'><br>
             <label for 'confirmNewPassword'>confirmNewPassword:</label>  
             <input type = 'text' id ='confirmNewPassword' name = 'confirmNewPassword'><br>
-            <label for 'question'>question:(example: what is your color?)</label> 
-            <input type = 'text' id ='question' name = 'question'><br>
+            <label for 'question'>question: what is your favourite color?</label><br> 
             <label for 'answer'>answer:</label>
             <input type = 'text' id ='answer' name = 'answer'><br>
             <label for 'email'>email:</label>
@@ -59,7 +58,6 @@ switch ($_GET['a'])
         $newPassword = $_REQUEST['newPassword'];
         $confirmNewPassword = $_REQUEST['confirmNewPassword'];
         $answer = $_REQUEST['answer'];
-        $question = $_REQUEST['question'];
         $email = $_REQUEST['email'];
         
         $sql = "SELECT * FROM student WHERE studentID = '$studentID'";
@@ -79,7 +77,7 @@ switch ($_GET['a'])
                 }
                 else
                 {
-                    $sql = "UPDATE student SET password = '$newPassword', answer = '$answer', question = '$question', email = '$email'  WHERE studentID = '$studentID'";
+                    $sql = "UPDATE student SET password = '$newPassword', answer = '$answer', email = '$email'  WHERE studentID = '$studentID'";
                     $result = $conn->query($sql);
                     if($result == TRUE)
                     {
