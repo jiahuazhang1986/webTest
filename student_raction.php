@@ -52,6 +52,7 @@ switch ($_GET['a'])
 
     case "change_password":
     {
+
         $studentID = $_SESSION['studentuser']['studentID'];
     
         $oldPassword = $_REQUEST['oldPassword'];
@@ -63,33 +64,42 @@ switch ($_GET['a'])
         
         $sql = "SELECT * FROM student WHERE studentID = '$studentID'";
         $result = $conn->query($sql);
-        $row = $result->fetch_row();
-       if($oldPassword == $row[5])
-       {
-           if($newPassword != $confirmNewPassword)
-           {
-           echo "not same password!";
-           }
-           else if($email == "")
-           {
-               echo "email must fill!";
-           }
-           else
-           {
-               $sql = "UPDATE student SET password = '$newPassword', answer = '$answer', question = '$question', email = '$email'  WHERE studentID = '$studentID'";
-               $result = $conn->query($sql);
-               if($result == TRUE)
-               {
-                   echo "password changed!";
-               }
-           }
-       }
-       else
-       {
-           echo "old password is wrong!";
-       }
-        break;   
+        if($result->num_rows == 1)
+        {
+            $row = $result->fetch_row();
+            if($oldPassword == $row[5])
+            {
+                if($newPassword != $confirmNewPassword)
+                {
+                echo "not same password!";
+                }
+                else if($email == "")
+                {
+                    echo "email must fill!";
+                }
+                else
+                {
+                    $sql = "UPDATE student SET password = '$newPassword', answer = '$answer', question = '$question', email = '$email'  WHERE studentID = '$studentID'";
+                    $result = $conn->query($sql);
+                    if($result == TRUE)
+                    {
+                        echo "password changed!";
+                    }
+                }
+            }
+            else
+            {
+                echo "old password is wrong!";
+            }
+                
+        }
+        else
+        {
+            echo "something wrong";
+        }
+        break;
     }
+        
 }
 
 $conn->close();

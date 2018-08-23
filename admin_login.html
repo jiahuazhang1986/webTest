@@ -1,16 +1,45 @@
 <html>
+
+<style>
+body{
+    background-image: url("picture/school.jpg");
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+#container {
+    background-color: lightblue;
+    position: absolute;
+    top: 300px;
+    left:600px;
+    height: 200px;
+    width: 400px;
+} 
+form{
+    position: relative;
+    top: 50px;
+    left:50px;
+}
+a{
+    position: relative;
+    top: 50%;
+    left:50%;
+}
+
+
+</style>
 <body>
 
+<div id = "container">
 <form method="post" action="admin_loginoutRaction.php?a=login">
 adminID: <input type = "text" name = "adminID">
 <br>
 password: <input type = "text" name ="password">
-<br>
-<input type = "submit" value = "submit">
-<br>
-<a href = "student_login.html">student_login</a>
-</form>
 
+<input  type = "submit" value = "login">
+<br><br>
+<a  href = "student_login.html">student_login</a>
+</form>
+</div>
 </body>
 </html>
 
