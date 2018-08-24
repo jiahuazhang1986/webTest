@@ -42,18 +42,7 @@ body{
     left:1100px;
     
 }
-input{
-    border: 1px solid #ccc; 
-    padding: 7px 3px;
-    border-radius: 5px; /*css3属性IE不支持*/
-    padding-left:5px; 
-}
-button{
-    border: 1px solid #ccc; 
-    padding: 7px 3px;
-    border-radius: 5px; /*css3属性IE不支持*/
-    padding-left:5px; 
-}
+
 </style>
 </head>
 <body>
