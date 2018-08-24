@@ -133,7 +133,7 @@ switch($_GET['a'])
         $sql = "SELECT * FROM student ORDER BY studentID";
         $result = $conn->query($sql);
         echo "<table style ='border : solid 1px black;'>";
-        echo "<tr><th>studentID</th><th>studentName</th><th>age</th><th>gender</th><th>department</th></tr>";
+        echo "<tr><th>studentID</th><th>studentName</th><th>age</th><th>gender</th><th>department</th><th></th></tr>";
         while ($row = $result->fetch_row()) 
         {
             echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td><td>$row[4]</td>
@@ -160,16 +160,47 @@ switch($_GET['a'])
 
     case "grade_management":
     {
-        $sql = "SELECT * FROM sreport ORDER BY studentID";
+        $page = isset($_GET['page'])?$_GET['page']:1;
+
+        $pagesize = 10;
+        $offset = $pagesize * ($page-1);
+
+        $sql = "SELECT * FROM sreport";
         $result = $conn->query($sql);
-        echo "<table style ='border : solid 1px black;'>";
-        echo "<tr><th>studentID</th><th>cno</th><th>cname</th><th>mark</th><th><input type = 'button' onclick = 'addGrade_face()' value ='ADD'></th></tr>";
-         while ($row = $result->fetch_row()) 
-         {
-             echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td>
-             <td><input type = 'button' onclick = 'editInfo(\"$row[0]\", \"$row[1]\")' value ='edit'></td><td><input type = 'button' onclick = 'deleteInfo(\"$row[0]\", \"$row[1]\")' value ='delete'></td></tr>";
-         }
-         break;
+        $total_rows = $result->num_rows;
+        $total_page = ceil($total_rows/$pagesize);
+
+        $sql = "SELECT * FROM sreport ORDER BY studentID limit $offset, $pagesize";
+        $result = $conn->query($sql);
+
+        echo "<table id='tb01'>";
+        echo "<tr><th>studentID</th><th>cno</th><th>cname</th><th>mark</th><th><input type = 'button' onclick = 'addGrade_face()' value ='ADD'></th><th></th></tr>";
+        while ($row = $result->fetch_row()) 
+        {
+            echo "<tr><td>$row[0]</td><td>$row[1]</td><td>$row[2]</td><td>$row[3]</td>
+            <td><input type = 'button' onclick = 'editInfo(\"$row[0]\", \"$row[1]\")' value ='edit'></td><td><input type = 'button' onclick = 'deleteInfo(\"$row[0]\", \"$row[1]\")' value ='delete'></td></tr>";
+        }
+        echo "</table>";
+
+
+        echo "<div style = 'text-align:center;'>";
+        echo "<input type ='button' onclick = NextPage(1) value = 'first page'>";
+        echo '&nbsp';
+        if($page > 1)
+        {
+            $num = $page - 1;
+            echo "<input type ='button' onclick = NextPage($num) value = '<<pre page'>";
+            echo '&nbsp';
+        }
+        if($page < $total_page)
+        {
+            $num = $page + 1;
+            echo "<input type ='button' onclick = NextPage($num) value = '>>next page'>";
+            echo '&nbsp';
+        }
+        echo "<input type ='button' onclick = NextPage($total_page) value = 'last page'>";
+        echo "</div>";
+        break;
     }
 
     case "add_grade_face":

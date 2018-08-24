@@ -147,3 +147,10 @@ function addCourse()
     $("#div2").load("admin_raction.php?a=addCourse&cno="+cno+"&cname="+cname);
     course_management();
 }
+
+function NextPage(pagenum)
+{
+    $("#div1").html("");
+    $("#div2").html("");
+    $("#div1").load("admin_raction.php?a=grade_management&page="+pagenum);
+}
