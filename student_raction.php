@@ -23,7 +23,7 @@ switch ($_GET['a'])
         
         $sql = "SELECT * FROM sreport WHERE studentID = '$studentID'";
         $result = $conn->query($sql);
-        echo "<table style ='border : solid 1px black;'>";
+        echo "<table class='tb01'>";
         echo "<tr><th>cno</th><th>cname</th><th>mark</th></tr>";
         while ($row = $result->fetch_row()) 
         {

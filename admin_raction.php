@@ -132,7 +132,7 @@ switch($_GET['a'])
     {
         $sql = "SELECT * FROM student ORDER BY studentID";
         $result = $conn->query($sql);
-        echo "<table style ='border : solid 1px black;'>";
+        echo "<table class='tb01'>";
         echo "<tr><th>studentID</th><th>studentName</th><th>age</th><th>gender</th><th>department</th><th></th></tr>";
         while ($row = $result->fetch_row()) 
         {
@@ -173,7 +173,7 @@ switch($_GET['a'])
         $sql = "SELECT * FROM sreport ORDER BY studentID limit $offset, $pagesize";
         $result = $conn->query($sql);
 
-        echo "<table id='tb01'>";
+        echo "<table class='tb01'>";
         echo "<tr><th>studentID</th><th>cno</th><th>cname</th><th>mark</th><th><input type = 'button' onclick = 'addGrade_face()' value ='ADD'></th><th></th></tr>";
         while ($row = $result->fetch_row()) 
         {
@@ -261,7 +261,7 @@ switch($_GET['a'])
     {
         $sql = "SELECT * FROM course ORDER BY cno";
         $result = $conn->query($sql);
-        echo "<table style ='border : solid 1px black;'>";
+        echo "<table class='tb01'>";
         echo "<tr><th>cno</th><th>cname</th><th><input type = 'button' onclick = 'addCourse_face()' value = 'AddCourse'></th></tr>";
         while ($row = $result->fetch_row()) 
         {

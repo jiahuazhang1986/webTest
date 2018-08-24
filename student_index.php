@@ -54,6 +54,25 @@ button{
     border-radius: 5px; /*css3属性IE不支持*/
     padding-left:5px; 
 }
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+table.tb01 {
+    border : solid 1px black;
+}
+
+table.tb01 tr:nth-child(even) {
+    background-color: #eee;
+}
+table.tb01 tr:nth-child(odd) {
+   background-color: #fff;
+}
 </style>
 </head>
 <body>

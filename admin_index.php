@@ -69,14 +69,14 @@ th, td {
     text-align: left;
 }
 
-table#tb01 {
+table.tb01 {
     border : solid 1px black;
 }
 
-table#tb01 tr:nth-child(even) {
+table.tb01 tr:nth-child(even) {
     background-color: #eee;
 }
-table#tb01 tr:nth-child(odd) {
+table.tb01 tr:nth-child(odd) {
    background-color: #fff;
 }
 input{
