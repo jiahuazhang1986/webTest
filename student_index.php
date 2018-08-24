@@ -22,6 +22,7 @@ student management system
 <script  src = "student_helper.js"></script>
 <style>
 body{
+    margin: 0;
     background-color: powderblue;
 }
 #container{

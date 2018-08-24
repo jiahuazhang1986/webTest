@@ -18,9 +18,10 @@ admin management system
 <script type="text/javascript"  src = "admin_helper.js"></script>
 <style>
 body{
+    margin: 0;
     background-color: powderblue;
 }
-#head{
+#head{   
     background-color: #b1040e;
     position: fixed;
     padding:0px;
