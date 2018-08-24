@@ -14,7 +14,7 @@ function search_student_function()
                             $("#div1").load("admin_raction.php?a=search_infor_raction&studentID="+studentID);
                         });
 
-            var input1 = $("<input type='text' id='inputID1'></input>");
+            var input1 = $("<input type='text' id='inputID1' autofocus='autofocus'></input>");
             $("#div1").append("studentID:<br>", input1, btn);
         }
 
@@ -22,7 +22,7 @@ function search_student_function()
         {
             $("#div1").html("");
             $("#div2").html("");
-            var studentID = $("<input type = 'text' id = 'studentID' ></input>");
+            var studentID = $("<input type = 'text' id = 'studentID' autofocus='autofocus'></input>");
             var studentName = $("<input type = 'text' id = 'studentName' ></input>");
             var age = $("<input type = 'text' id = 'age' ></input>");
             var gender = $("<input type = 'text' id = 'gender' ></input>");
