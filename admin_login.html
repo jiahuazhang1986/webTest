@@ -13,6 +13,7 @@ body{
     left:600px;
     height: 200px;
     width: 400px;
+    border-radius: 5px;
 } 
 form{
     position: relative;
@@ -24,16 +25,23 @@ a{
     top: 50%;
     left:50%;
 }
-
+input{
+    border: 1px solid #ccc; 
+    padding: 7px 3px;
+    border-radius: 5px; /*css3属性IE不支持*/
+    padding-left:5px; 
+}
 
 </style>
 <body>
 
 <div id = "container">
 <form method="post" action="admin_loginoutRaction.php?a=login">
-adminID: <input type = "text" name = "adminID">
+
+<input type = "text" name = "adminID"  placeholder="adminID">
 <br>
-password: <input type = "text" name ="password">
+
+<input type = "text" name ="password" placeholder="password">
 
 <input  type = "submit" value = "login">
 <br><br>
